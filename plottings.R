@@ -4,7 +4,8 @@ distPlot <- function(data, col) {
     ggplot(data, aes_string(x=col))+
       geom_histogram(aes(y=..density..),
                      colour="black", 
-                     fill="white") +
+                     fill="white",
+                     bins = 30) +
       geom_density(alpha=.2, fill="#FF6666") +
       labs(x=col,
            y="Density") +
@@ -26,7 +27,7 @@ distPlot <- function(data, col) {
 scatterPlot <- function(data, cols) {
   ggplot(data,aes_string(x = cols[1], y = cols[2])) +
     geom_point() + 
-    stat_smooth() +
+    stat_smooth(method = 'gam') +
     labs(x=cols[1],y=cols[2]) +
     theme_light() +
     scale_color_manual(values = c("black", "#66D65C"), guide = FALSE)

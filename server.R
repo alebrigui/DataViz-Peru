@@ -3,7 +3,7 @@ source("plottings.R")
 
 server <- function(input, output, sessions){
   
-  data <- reactive(model_input_settl)
+  data <- reactive(settlements)
   
   output$dist_col <- renderPlot({
     distPlot(ubiInBounds(),input$color)
@@ -58,7 +58,7 @@ server <- function(input, output, sessions){
     
     leafletProxy("map", data = data()) %>%
       clearShapes() %>%
-      addCircles(~longitude, ~latitude, radius=radius, layerId=~idx_settl,
+      addCircles(~longitude, ~latitude, radius=radius,
                  stroke=FALSE, fillOpacity=0.6, fillColor=~pal(colorData),
                  label = paste(paste(sizeBy,as.character(data()[[sizeBy]]),sep=" : "),
                                paste(colorBy,as.character(data()[[colorBy]]),sep=" : "),

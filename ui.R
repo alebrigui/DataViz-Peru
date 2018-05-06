@@ -29,8 +29,7 @@ navbarPage("Internet para Todos VIS", id="nav",
                                       
                         )
                     )
-                    ),
-           tabPanel("EDA")
+                    )
            
            
 )
